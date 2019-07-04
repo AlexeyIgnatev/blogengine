@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'user_register_url' %}" method="post">
+    {% csrf_token %}
+
+    <p>Username: {{form.username}}</p>
+    <p>Password: {{form.password1}}</p>
+    <p>Repeat password: {{form.password2}}</p>
+
+    {% if form.errors %}
+        <div class="alert alert-danger mt-2 ml-0">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+
+    <button type="submit" class="btn btn-outline-success">Register</button>
+
+</form>
+{% endblock %}

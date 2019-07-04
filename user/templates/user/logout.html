@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Log out - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'user_logout_url' %}" method="post">
+    {% csrf_token %}
+     <h3>Are you sure yoy want log out?</h3>
+    <a href="{% url 'posts_list_url' %}" class="btn btn-success">Cancel</a>
+    <button type="submit" class="btn btn-danger">Log out</button>
+</form>
+{% endblock %}
